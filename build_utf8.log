@@ -1,0 +1,67 @@
+﻿
+> declarant-crm@1.0.0 build
+> next build
+
+  тЦ▓ Next.js 14.2.35
+
+   Creating an optimized production build ...
+node.exe : Failed to compile.
+строка:1 знак:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Prog
+ram Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (F 
+   ailed to compile.:String) [], RemoteExcept  
+  ion
+    + FullyQualifiedErrorId : NativeCommandErr 
+   or
+ 
+
+./src/components/providers.tsx
+Module not found: Can't resolve 'next-themes'
+
+https://nextjs.org/docs/messages/module-not-fou
+nd
+
+./src/components/ui/scroll-area.tsx
+Module not found: Can't resolve '@radix-ui/reac
+t-scroll-area'
+
+https://nextjs.org/docs/messages/module-not-fou
+nd
+
+Import trace for requested module:
+./src/components/layout/sidebar.tsx
+./src/app/(dashboard)/layout.tsx
+
+./src/hooks/use-auth.ts
+Module not found: Can't resolve 'zustand'
+
+https://nextjs.org/docs/messages/module-not-fou
+nd
+
+Import trace for requested module:
+./src/app/(dashboard)/layout.tsx
+
+./src/hooks/use-auth.ts
+Module not found: Can't resolve 'zustand/middle
+ware'
+
+https://nextjs.org/docs/messages/module-not-fou
+nd
+
+Import trace for requested module:
+./src/app/(dashboard)/layout.tsx
+
+./src/hooks/use-notifications.ts
+Module not found: Can't resolve 'zustand'
+
+https://nextjs.org/docs/messages/module-not-fou
+nd
+
+Import trace for requested module:
+./src/app/(dashboard)/layout.tsx
+
+
+> Build failed because of webpack errors

@@ -45,6 +45,7 @@ import {
   Loader2,
   Save,
   Send,
+  CheckCircle2,
 } from "lucide-react"
 import { toast } from "sonner"
 
@@ -149,7 +150,7 @@ export default function SettingsPage() {
 
   const onConfirm = async () => {
     if (!confirmCode) return
-    
+
     try {
       setIsLoading(true)
       if (confirmType === "password") {
@@ -184,7 +185,7 @@ export default function SettingsPage() {
 
   const handleAvatarUpload = async () => {
     if (!avatarFile) return
-    
+
     try {
       setIsLoading(true)
       await settingsApi.uploadAvatar(avatarFile)
@@ -533,7 +534,7 @@ export default function SettingsPage() {
               Введите код подтверждения из Telegram
             </DialogDescription>
           </DialogHeader>
-          
+
           <div className="py-4">
             <Input
               placeholder="000000"

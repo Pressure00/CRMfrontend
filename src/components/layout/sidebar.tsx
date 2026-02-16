@@ -9,7 +9,7 @@ import { useAuth } from "@/hooks/use-auth"
 import {
   LayoutDashboard,
   FileText,
-  Certificate,
+  Award,
   ClipboardList,
   FolderOpen,
   Users,
@@ -22,7 +22,7 @@ import {
   MailQuestion,
 } from "lucide-react"
 
-interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 export function Sidebar({ className }: SidebarProps) {
   const pathname = usePathname()
@@ -69,7 +69,7 @@ export function Sidebar({ className }: SidebarProps) {
     {
       title: "Сертификаты",
       href: "/certificates",
-      icon: Certificate,
+      icon: Award,
     },
     {
       title: "Задачи",
@@ -112,7 +112,7 @@ export function Sidebar({ className }: SidebarProps) {
     {
       title: "Сертификаты",
       href: "/certificates",
-      icon: Certificate,
+      icon: Award,
     },
     {
       title: "Задачи",
@@ -157,8 +157,8 @@ export function Sidebar({ className }: SidebarProps) {
   const navItems = isAdmin
     ? adminNavItems
     : isDeclarant
-    ? declarantNavItems
-    : certifierNavItems
+      ? declarantNavItems
+      : certifierNavItems
 
   return (
     <div className={cn("pb-12 w-64 border-r bg-background", className)}>

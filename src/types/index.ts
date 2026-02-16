@@ -13,6 +13,7 @@ export interface User {
   company_name?: string | null;
   company_inn?: string | null;
   role?: string | null;
+  telegram_chat_id?: string | null;
 }
 
 export interface UserResponse {
@@ -225,6 +226,23 @@ export interface NotificationResponse {
   created_at: string;
 }
 
+export interface DeclarationShortDash {
+  id: number;
+  display_number: string;
+  client_name?: string | null;
+  regime: string;
+  created_at: string;
+}
+
+export interface CertificateShortDash {
+  id: number;
+  certificate_type: string;
+  certificate_number?: string | null;
+  client_name?: string | null;
+  status: string;
+  deadline: string;
+}
+
 // Dashboard types
 export interface DashboardDeclarant {
   active_tasks: number;
@@ -236,8 +254,48 @@ export interface DashboardDeclarant {
   overdue_certificates: number;
   recent_declarations: DeclarationShortDash[];
   recent_certificates: CertificateShortDash[];
+  recent_in_progress?: CertificateShortDash[];
+  recent_overdue?: CertificateShortDash[];
   date_from?: string | null;
   date_to?: string | null;
   selected_user_id?: number | null;
   selected_user_name?: string | null;
+}
+
+// Missing definitions
+export interface DeclarationVehicleResponse {
+  id: number;
+  vehicle_type: string;
+  vehicle_number: string;
+}
+
+export interface DeclarationAttachmentResponse {
+  id: number;
+  name: string;
+  url: string;
+  type: string;
+  document_name?: string | null;
+  folder_name?: string | null;
+}
+
+export interface CertificateFileResponse {
+  id: number;
+  name: string;
+  url: string;
+  type: string;
+}
+
+export interface CertificateAttachmentResponse {
+  id: number;
+  name: string;
+  url: string;
+}
+
+export interface CertificateDeclarationResponse extends DeclarationShort { }
+
+export interface CertificateActionResponse {
+  id: number;
+  action: string;
+  created_at: string;
+  user_name: string;
 }

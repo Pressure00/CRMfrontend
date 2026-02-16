@@ -21,25 +21,25 @@ export const adminApi = {
   deleteCompany: (id: number) => apiClient.delete(`/api/admin/companies/${id}`),
   blockCompany: (id: number) => apiClient.post(`/api/admin/companies/${id}/block`),
   unblockCompany: (id: number) => apiClient.post(`/api/admin/companies/${id}/unblock`),
-  sendMessageToCompany: (id: number, data: any) => 
+  sendMessageToCompany: (id: number, data: any) =>
     apiClient.post(`/api/admin/companies/${id}/message`, data),
   listUsers: (params?: any) => apiClient.get("/api/admin/users", { params }),
   getUser: (id: number) => apiClient.get(`/api/admin/users/${id}`),
   deleteUser: (id: number) => apiClient.delete(`/api/admin/users/${id}`),
   blockUser: (id: number) => apiClient.post(`/api/admin/users/${id}/block`),
   unblockUser: (id: number) => apiClient.post(`/api/admin/users/${id}/unblock`),
-  assignRole: (id: number, data: any) => 
+  assignRole: (id: number, data: any) =>
     apiClient.post(`/api/admin/users/${id}/assign-role`, data),
   listRequests: (params?: any) => apiClient.get("/api/admin/requests", { params }),
-  handleRequest: (id: number, data: any) => 
+  handleRequest: (id: number, data: any) =>
     apiClient.post(`/api/admin/requests/${id}/action`, data),
 };
 
 // Dashboard endpoints
 export const dashboardApi = {
-  getDeclarantDashboard: (params?: any) => 
+  getDeclarantDashboard: (params?: any) =>
     apiClient.get("/api/dashboard/declarant", { params }),
-  getCertifierDashboard: (params?: any) => 
+  getCertifierDashboard: (params?: any) =>
     apiClient.get("/api/dashboard/certifier", { params }),
 };
 
@@ -50,12 +50,12 @@ export const declarationsApi = {
   get: (id: number) => apiClient.get(`/api/declarations/${id}`),
   update: (id: number, data: any) => apiClient.put(`/api/declarations/${id}`, data),
   delete: (id: number) => apiClient.delete(`/api/declarations/${id}`),
-  redirect: (id: number, data: any) => 
+  redirect: (id: number, data: any) =>
     apiClient.post(`/api/declarations/${id}/redirect`, data),
   createGroup: (data: any) => apiClient.post("/api/declarations/groups", data),
-  addToGroup: (id: number, data: any) => 
+  addToGroup: (id: number, data: any) =>
     apiClient.post(`/api/declarations/${id}/add-to-group`, data),
-  removeFromGroup: (id: number) => 
+  removeFromGroup: (id: number) =>
     apiClient.post(`/api/declarations/${id}/remove-from-group`),
   listGroups: () => apiClient.get("/api/declarations/groups/list"),
   deleteGroup: (id: number) => apiClient.delete(`/api/declarations/groups/${id}`),
@@ -68,17 +68,17 @@ export const certificatesApi = {
   get: (id: number) => apiClient.get(`/api/certificates/${id}`),
   update: (id: number, data: any) => apiClient.put(`/api/certificates/${id}`, data),
   delete: (id: number) => apiClient.delete(`/api/certificates/${id}`),
-  updateStatus: (id: number, data: any) => 
+  updateStatus: (id: number, data: any) =>
     apiClient.post(`/api/certificates/${id}/status`, data),
-  fillNumber: (id: number, data: any) => 
+  fillNumber: (id: number, data: any) =>
     apiClient.post(`/api/certificates/${id}/fill-number`, data),
-  assign: (id: number, data: any) => 
+  assign: (id: number, data: any) =>
     apiClient.post(`/api/certificates/${id}/assign`, data),
-  redirect: (id: number, data: any) => 
+  redirect: (id: number, data: any) =>
     apiClient.post(`/api/certificates/${id}/redirect`, data),
-  confirmReview: (id: number) => 
+  confirmReview: (id: number) =>
     apiClient.post(`/api/certificates/${id}/confirm-review`),
-  confirmPayment: (id: number) => 
+  confirmPayment: (id: number) =>
     apiClient.post(`/api/certificates/${id}/confirm-payment`),
   uploadFile: (id: number, fileType: string, file: File) => {
     const formData = new FormData();
@@ -103,10 +103,10 @@ export const documentsApi = {
   createFolder: (data: any) => apiClient.post("/api/documents/folders", data),
   listFolders: (params?: any) => apiClient.get("/api/documents/folders", { params }),
   getFolder: (id: number) => apiClient.get(`/api/documents/folders/${id}`),
-  updateFolder: (id: number, data: any) => 
+  updateFolder: (id: number, data: any) =>
     apiClient.put(`/api/documents/folders/${id}`, data),
   deleteFolder: (id: number) => apiClient.delete(`/api/documents/folders/${id}`),
-  attachFolderToClient: (id: number, data: any) => 
+  attachFolderToClient: (id: number, data: any) =>
     apiClient.post(`/api/documents/folders/${id}/attach-client`, data),
   uploadDocument: (file: File, folderId?: number, clientId?: number) => {
     const formData = new FormData();
@@ -129,9 +129,9 @@ export const documentsApi = {
   listDocuments: (params?: any) => apiClient.get("/api/documents/files", { params }),
   getDocument: (id: number) => apiClient.get(`/api/documents/files/${id}`),
   deleteDocument: (id: number) => apiClient.delete(`/api/documents/files/${id}`),
-  moveDocument: (id: number, data: any) => 
+  moveDocument: (id: number, data: any) =>
     apiClient.post(`/api/documents/files/${id}/move`, data),
-  attachDocumentToClient: (id: number, data: any) => 
+  attachDocumentToClient: (id: number, data: any) =>
     apiClient.post(`/api/documents/files/${id}/attach-client`, data),
 };
 
@@ -152,6 +152,8 @@ export const partnershipsApi = {
   list: () => apiClient.get("/api/partnerships/"),
   listPending: () => apiClient.get("/api/partnerships/pending"),
   delete: (id: number) => apiClient.delete(`/api/partnerships/${id}`),
+  handleRequest: (id: number, data: any) =>
+    apiClient.post(`/api/partnerships/requests/${id}/action`, data),
 };
 
 // Employees endpoints
@@ -186,14 +188,23 @@ export const settingsApi = {
     });
   },
   deleteAvatar: () => apiClient.delete("/api/settings/avatar"),
-  requestPasswordChange: (data: any) => 
+  requestPasswordChange: (data: any) =>
     apiClient.post("/api/settings/change-password/request", data),
-  confirmPasswordChange: (code: string) => 
+  confirmPasswordChange: (code: string) =>
     apiClient.post(`/api/settings/change-password/confirm?code=${code}`),
-  requestEmailChange: (data: any) => 
+  requestEmailChange: (data: any) =>
     apiClient.post("/api/settings/change-email/request", data),
-  confirmEmailChange: (code: string) => 
+  confirmEmailChange: (code: string) =>
     apiClient.post(`/api/settings/change-email/confirm?code=${code}`),
-  linkTelegram: (chatId: string) => 
+  linkTelegram: (chatId: string) =>
     apiClient.post(`/api/settings/link-telegram?telegram_chat_id=${chatId}`),
+};
+
+// Requests endpoints
+export const requestsApi = {
+  list: (params?: any) => apiClient.get("/api/requests", { params }),
+  handleRequest: (id: number, data: any) =>
+    apiClient.post(`/api/requests/${id}/action`, data),
+  sendMessageToAdmin: (data: any) =>
+    apiClient.post("/api/requests/message-admin", data),
 };

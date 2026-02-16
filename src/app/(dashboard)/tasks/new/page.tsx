@@ -97,7 +97,7 @@ export default function NewTaskPage() {
   const onSubmit = async (data: TaskForm) => {
     try {
       setIsLoading(true)
-      
+
       const payload = {
         ...data,
         deadline: format(data.deadline, "yyyy-MM-dd"),
@@ -134,17 +134,19 @@ export default function NewTaskPage() {
       ...prev,
       [type]: prev[type as keyof typeof prev].filter(item => item.id !== id)
     }))
-    
+
     const fieldMap = {
       documents: "attachment_document_ids",
       folders: "attachment_folder_ids",
       declarations: "attachment_declaration_ids",
       certificates: "attachment_certificate_ids",
     }
-    
-    const currentIds = form.getValues(fieldMap[type as keyof typeof fieldMap]) || []
+
+    const fieldName = fieldMap[type as keyof typeof fieldMap] as keyof TaskForm
+    const currentIds = (form.getValues(fieldName) as number[]) || []
+
     form.setValue(
-      fieldMap[type as keyof typeof fieldMap], 
+      fieldName,
       currentIds.filter(i => i !== id)
     )
   }
