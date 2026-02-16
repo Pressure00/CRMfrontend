@@ -2,13 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['your-storage-domain.com'], // Добавьте ваш домен для хранения файлов
+    domains: [process.env.NEXT_PUBLIC_STORAGE_DOMAIN || 'localhost'],
   },
   async rewrites() {
+    // Проверяем, что API_URL определен
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+    
     return [
       {
         source: '/api/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`, // Прокси для API
+        destination: `${apiUrl}/api/:path*`, // Исправлено: добавлен /api/
       },
     ];
   },
